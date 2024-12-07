@@ -13,7 +13,7 @@ const pollSlice = createSlice({
       const { stepIndex, answer } = action.payload;
       state.selectedAnswers[stepIndex] = answer;
     },
-    submitPollStart: (state) => {
+    submitPollRequest: (state) => {
       state.isLoading = true;
       state.error = null;
     },
@@ -36,7 +36,7 @@ const pollSlice = createSlice({
 
 export const {
   setSelectedAnswer,
-  submitPollStart,
+  submitPollRequest,
   submitPollSuccess,
   submitPollFailure,
   resetPoll,

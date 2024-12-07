@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CarouselSteps from './CarouselSteps';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetPoll, setSelectedAnswer, submitPollFailure, submitPollStart, submitPollSuccess } from '../redux/pollSlice';
+import { resetPoll, setSelectedAnswer, submitPollFailure, submitPollRequest, submitPollSuccess } from '../redux/pollSlice';
 
 const PollForm = ({ steps }) => {
     const [currentStep, setCurrentStep] = useState(0);
@@ -109,7 +109,7 @@ const PollForm = ({ steps }) => {
 
     // Submit poll action
     const handleSubmitPoll = async () => {
-        dispatch(submitPollStart());
+        dispatch(submitPollRequest());
         try {
             const response = await fetch('https://api.mockapi.com/api/v2/submitpoll', {
                 method: 'POST',
