@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import CarouselSteps from './CarouselSteps';
 import { useDispatch, useSelector } from 'react-redux';
-import { resetPoll, setSelectedAnswer, submitPollFailure, submitPollRequest, submitPollSuccess } from '../redux/pollSlice';
+import { resetPoll, setSelectedAnswer, submitPollFailure, submitPollRequest, submitPollSuccess } from '../store/pollSlice';
+import Snackbar, { SnackbarCloseReason } from '@mui/material/Snackbar';
 
 const PollForm = ({ steps }) => {
     const [currentStep, setCurrentStep] = useState(0);
@@ -208,7 +209,12 @@ const PollForm = ({ steps }) => {
                             // Summary Slide
                             <div className="w-full bg-green-300 flex flex-col items-center justify-center p-10">
                                 {isPollSubmitted && (
-                                    <h1 className="text-gray-600 mb-10">Thank you for submitting the poll!</h1>
+                                    <Snackbar
+                                        open={isPollSubmitted}
+                                        autoHideDuration={6000}
+                                        message="Thank you for submitting the poll!"
+                                    />
+                                    // <h1 className="text-gray-600 mb-10">Thank you for submitting the poll!</h1>
                                 )}
                                 <h2 className="text-2xl font-bold text-gray-800 mb-4">
                                     Summary of Your Answers
