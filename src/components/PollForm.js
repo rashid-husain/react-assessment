@@ -129,7 +129,7 @@ const PollForm = ({ steps }) => {
 
             const data = await response.json();
             dispatch(submitPollSuccess());
-            alert('Poll submitted successfully!');
+            alert('Poll submitted successfully!');// optional that can remove
         } catch (err) {
             dispatch(submitPollFailure(err.message || 'Failed to submit poll'));
             alert('Error: ' + (err.message || 'Something went wrong'));
